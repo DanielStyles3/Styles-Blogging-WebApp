@@ -14,9 +14,19 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path='/' element={user ? <Home /> : <Navigate to='/login' />} />
-        <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
-        <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
+        <Route path='/' element={!user ? <Home /> : <Navigate to='/login' />} />
+        <Route path='/login' element={user ? <Navigate to='/welcome' /> : <Login />} />
+<Route path='/register' element={user ? <Register /> : <Navigate to='/' />} />
+                {/* <Route
+            path="/Login"
+            element={user ? <Navigate to="../" /> : <Login />} 
+          
+          />
+<Route
+            path="/Register"
+            element={user ? <Navigate to="./Login" /> : <Login />} 
+          
+          />      */}
         <Route path='/create' element={user ? <Create /> : <Navigate to='/login' />} />
         <Route path='/blogDetails/:id' element={user ? <BlogDetails /> : <Navigate to='/login' />} />
         <Route path='/updateBlog/:id' element={user ? <UpdateBlog /> : <Navigate to='/login' />} />
